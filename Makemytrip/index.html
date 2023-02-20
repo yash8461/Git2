@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Make My Trip</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="style1.css">
+
+
+    <style>
+
+     .im img{
+           width: 40px;
+     }
+
+     .s {
+              text-align: center;
+              width: 200px;
+             margin-left: 400px;
+             
+
+     }
+
+    </style>
+  
+</head>
+
+<body>
+  <header>
+
+    <div>
+
+      <div class=" bg-img">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg  navbar-dark">
+            <div class="container-fluid bg-dark">
+              <div>
+                <a class="navbar-brand text-white">make <strong class="bg-danger">my</strong>trip</a>
+              </div>
+              <div>
+                <button class="navbar-toggler  bg-primary" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                  aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav text-white p-">
+                    <li class="nav-item ">
+                      <a class="nav-link active text-white" aria-current="page" href="#"> <img
+                          src="./images/Screenshot_20230218_182008.png" alt="" height="30px">Supper Offers</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-white" href="#"> <img src="./images/Screenshot_20230218_182017.png" alt=""
+                          height="30px">Introducing My Bitz</a>
+                    </li>
+                    <li class="nav-item">
+
+                      <a class="nav-link text-white" href="#"> <img src="./images/Screenshot_20230218_182025.png" alt=""
+                          height="30px"> MyTrips</a>
+                    </li>
+                    <li class="nav-item">
+                      <!-- Example single danger button -->
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                          aria-expanded="false">
+                          Login or Create Account
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Login</a></li>
+                          <li><a class="dropdown-item" href="#">Create Account</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li class="nav-item ">
+                      <!-- Example single danger button -->
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-dark bg-gradient dropdown-toggle" data-bs-toggle="dropdown"
+                          aria-expanded="false">
+                          IN|ENG|INR
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">English</a></li>
+                          <li><a class="dropdown-item" href="#">Hindi</a></li>
+                          <li><a class="dropdown-item" href="#">INR</a></li>
+                          <li>
+                            <hr class="dropdown-divider">
+                          </li>
+                          <li><a class="dropdown-item" href="#">Separated link</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <div class="container bg-primary p-lg-5  p-3">
+          <div
+            class=" im bg-light text-center d-lg-flex d-md-flex justify-content-between  p-3 ml-5 mr-5 rounded ">
+            <div>
+             <img src="data:image/png;base64,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" alt="">
+             <p>Flights</p>
+            </div>
+            <div>
+             <img src="https://static.vecteezy.com/system/resources/thumbnails/000/627/396/small/illust58-5847-01.jpg" alt="">
+             <p>Hotels</p>
+            </div>
+           <div>
+           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZjssVCWDTt5iSXDQmUpaajcn4Bv5-tr1vJw&usqp=CAU" alt="">
+             <p>Homestays</p>  
+        </div>
+
+           <div>
+           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTREUJO_4Xw-HBtUc--kjuAdCoQpGDlfhR0w&usqp=CAU" alt="">
+         <p>Trains</p>
+        </div>
+
+        <div>
+            <img src="data:image/png;base64,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" alt="">
+         <p>Buses</p>
+        </div>
+
+        <div>
+      <img src="data:image/jpeg;base64,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" alt="">
+     <p>Charter Flights</p>
+    </div>
+
+
+          </div>
+
+          <div class="bg-light rounded mt-2 p-3">
+            <div class="bg-light mt-2 d-lg-flex d-md-flex justify-content-between">
+              <div class="d-lg-flex">
+                <div class="form-check m-2">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    ONE WAY
+                  </label>
+
+                </div>
+                <div class="form-check m-2">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    ROUND TRIP
+                  </label>
+                </div>
+                <div class="form-check m-2">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    MULTI CITY
+                  </label>
+                </div>
+              </div>
+              <div>
+                <h5 class="h5">Book International And Domestic Flights</h5>
+              </div>
+            </div>
+            <div class="d-lg-flex d-md-flex justify-content-center">
+              <div class="mb-3 m-3 ">
+                <label for="formGroupExampleInput" class="form-label">FROM</label>
+                <input type="text" class="form-control " id="formGroupExampleInput"
+                  placeholder="Enter Your Destination">
+              </div>
+              <div class="mb-3 m-3 ">
+                <label for="formGroupExampleInput" class="form-label">TO</label>
+                <input type="text" class="form-control " id="formGroupExampleInput"
+                  placeholder="Delhi">
+              </div>
+              <div class="mb-3 m-3 ">
+                <label for="formGroupExampleInput" class="form-label">DEPARTURE</label>
+                <input type="date" class="form-control " id="formGroupExampleInput"
+                  placeholder="Bengaluru">
+              </div>
+              <div class="mb-3 m-3">
+                <label for="formGroupExampleInput" class="form-label">RETURN</label>
+                <input type="date" class="form-control " id="formGroupExampleInput"
+                  placeholder="Enter Your Destination">
+              </div>
+              <div class="mb-3 m-3">
+                <label for="formGroupExampleInput" class="form-label">TRAVELLERS</label>
+                <select class="form-select" aria-label="Default select example">
+                  <option selected>0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+
+                </select>
+              </div>
+            </div>
+            <div>
+              <h5 class="h5">Select Fare Type:</h5>
+              <div class="d-lg-flex">
+                <div class="form-check m-2">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    Regular Fares
+                  </label>
+                </div>
+                <div class="form-check m-2">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    ArmedForces Fares
+                  </label>
+                </div>
+                <div class="form-check m-2">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    Student Fares
+                  </label>
+                </div>
+                <div class="form-check m-2">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    Senior Citizen Fares
+                  </label>
+                </div>
+                <div class="form-check m-2">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    Doctor & Nurses Fares
+                  </label>
+                </div>
+                <div class="form-check m-2">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    Double Seat Fares
+                  </label>
+                </div>
+              </div>
+
+            </div>
+            <div class=" s bg-primary text-white" >
+                <h3>SEARCH</h3>
+          </div>
+          
+        </div>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+     </header>
+  <main class="bg-color bg-gradient p-lg-5 ml-md-5 mr-md-5 p-sm-3 p-xs-3 p-3">
+    <div class="container bg-light rounded p-3 ">
+      <nav class="navbar navbar-expand-lg navbar-light m-2">
+        <div class="container-fluid">
+          <a class="navbar-brand fw-bold" href="#">Offers</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 border-bottom">
+              <li class="nav-item">
+                <a class="nav-link active  text-primary" aria-current="page" href="#">ALL OFFERS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link  text-primary" aria-current="page" href="#">BANK OFFERS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link  text-primary" aria-current="page" href="#">FLIGHTS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link  text-primary" aria-current="page" href="#">HOTELS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link  text-primary" aria-current="page" href="#">TRAINS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link  text-primary" aria-current="page" href="#">CABS</a>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </nav>
+      <div class="row container ">
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mt-3">
+          <div class="card " style="width: auto; ">
+            <img src="https://promos.makemytrip.com/notification/xhdpi//Desktop_Banner_SSFS_17Feb.jpg" class="card-img-top" alt="img1">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+              <a href="#" class="btn btn-primary">Click To Claim Offer</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mt-3">
+          <div class="card" style="width: auto;">
+            <img src="https://promos.makemytrip.com/notification/xhdpi//Desktop_DH-TravelFest_16Feb.jpg" class="card-img-top" alt="img2">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+              <a href="#" class="btn btn-primary">Click To Claim Offer</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mt-3">
+          <div class="card" style="width: auto;">
+            <img src="https://promos.makemytrip.com/notification/xhdpi//Desktop_IH-TravelFest_15Feb.jpg" class="card-img-top" alt="img3">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+              <a href="#" class="btn btn-primary">Click To Claim Offer</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mt-3">
+          <div class="card" style="width: auto;">
+            <img src="https://promos.makemytrip.com/notification/xhdpi//Desktop-DF-Extended-17Feb.jpg" class="card-img-top" alt="img4">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+              <a href="#" class="btn btn-primary">Click To Claim Offer</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mt-3">
+          <div class="card " style="width: auto; ">
+            <img src="https://promos.makemytrip.com/notification/xhdpi//Desktop-IF-Extended-17Feb.jpg" class="card-img-top" alt="img1">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+              <a href="#" class="btn btn-primary">Click To Claim Offer</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mt-3">
+          <div class="card " style="width: auto; ">
+            <img src="https://promos.makemytrip.com/notification/xhdpi//116X116-yes-17022023.jpg" class="card-img-top" alt="img1">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+              <a href="#" class="btn btn-primary">Click To Claim Offer</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container bg-light rounded mt-5 p-3">
+      <h2 class="h2 fw-bold">HandPicked Collections For You</h2>
+      <div class="row mt-2 p-md-3 p-sm-3">
+        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6 mt-2">
+          <div class="card"
+            style="background-image: url('https://hblimg.mmtcdn.com/content/hubble/img/delhi_hotels_tiow/mmt/activities/m_Le%20ROI%20Floating%20Huts_Eco%20Rooms_Tehri_Uttarakhand_l_550_821.jpg'); background-repeat: no-repeat; background-size: cover; height: 330px;">
+            <div class="card-body" style="margin-top: 190px;">
+              <h5 class="card-title  btn bg-light bg-gradient fw-bold">Top 9</h5>
+              <p class="card-text text-white">Stays in and around banglore for a weekend gateway</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6 mt-2">
+          <div class="card " style="background-image: url('https://hblimg.mmtcdn.com/content/hubble/img/seo_img/mmt/activities/m_Radisson_blu_image_seo_l_550_821.jpg');  height: 330px;">
+            <div class="card-body" style="margin-top: 200px;">
+              <h5 class="card-title  btn bg-light bg-gradient fw-bold">Top 11</h5>
+              <p class="card-text text-white">Beach Destinations</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6 mt-2">
+          <div class="card" style="background-image: url('https://hblimg.mmtcdn.com/content/hubble/img/bangalore_hotel_tiow/mmt/activities/m_Waterwoods%20Lodges%20&%20Resorts_Kabini_l_550_821.jpg');   height: 330px;">
+            <div class="card-body " style="margin-top: 200px;">
+              <h5 class="card-title  btn bg-light bg-gradient fw-bold">Top 11</h5>
+              <p class="card-text text-white">Weekend Gateways</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6 mt-2">
+          <div class="card"
+            style="background-image: url('https://hblimg.mmtcdn.com/content/hubble/img/collections/m_beach44_p_540_417.jpg'); background-repeat: no-repeat; background-size: cover; height: 330px;">
+            <div class="card-body " style="margin-top: 200px;">
+              <h5 class="card-title  btn bg-light bg-gradient fw-bold">Top 11</h5>
+              <p class="card-text text-white">Hill Stations</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6 mt-2">
+          <div class="card"
+            style="background-image: url('https://hblimg.mmtcdn.com/content/hubble/img/collections/m_weekend44_p_540_417.jpg'); background-repeat: no-repeat; background-size: cover;  height: 330px; ">
+            <div class="card-body " style="margin-top: 200px;">
+              <h5 class="card-title  btn bg-light bg-gradient fw-bold">Top 11</h5>
+              <p class="card-text text-white">Adventure Destinations</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6 mt-2">
+          <div class="card"
+            style="background-image: url('https://hblimg.mmtcdn.com/content/hubble/img/collections/m_weekend44_p_540_417.jpg'); background-repeat: no-repeat; background-size: cover;  height: 330px; ">
+            <div class="card-body " style="margin-top: 200px;">
+              <h5 class="card-title  btn bg-light bg-gradient fw-bold">Top 11</h5>
+              <p class="card-text text-white">Heritage Sites</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="container bg-light rounded mt-5 p-3">
+      <h2 class="h2 fw-bold">Unlock Lesser-known Wonders Of India</h2>
+      <div class="row mt-2 p-md-3 p-sm-3">
+        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6 mt-2">
+          <div class="card"
+            style="background-image: url('https://hblimg.mmtcdn.com//content/hubble/img/narkanda/mmt/destination/m_Narkanda_l_372_902.jpg'); background-repeat: no-repeat;background-size: cover; height: 330px;">
+            <div class="card-body" style="margin-top: 230px;">
+              <p class="card-text text-white">Shimla's Best Kept Secret</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6 mt-2">
+          <div class="card "
+            style="background-image: url('https://hblimg.mmtcdn.com//content/hubble/img/yercaud/mmt/destination/m_destination-yercaud-landscape_l_400_640.jpg');background-repeat: no-repeat;background-size: cover;  height: 330px;">
+            <div class="card-body" style="margin-top: 230px;">
+              <p class="card-text text-white">Tamil Nadu's Charming Hill Town</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6 mt-2">
+          <div class="card" style="background-image: url('https://hblimg.mmtcdn.com//content/hubble/img/dooars/mmt/destination/m_Dooars_l_457_685.jpg');   height: 330px;">
+            <div class="card-body " style="margin-top: 230px;">
+              <p class="card-text text-white">Pictureseque gateway to Himmalyas</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6 mt-2">
+          <div class="card"
+            style="background-image: url('https://hblimg.mmtcdn.com//content/hubble/img/saputara/mmt/destination/m_destination-saputara-landscape_l_400_640.jpg'); background-repeat: no-repeat; background-size: cover; height: 330px;">
+            <div class="card-body " style="margin-top: 230px;">
+              <p class="card-text text-white">Quint little Hill Station in Gujarat</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6 mt-2">
+          <div class="card"
+            style="background-image: url('https://hblimg.mmtcdn.com//content/hubble/img/dhanaulti/mmt/destination/m_Destination_Dhanaulti_l_534_801.jpg'); background-repeat: no-repeat; background-size: cover;  height: 330px; ">
+            <div class="card-body " style="margin-top: 230px;">
+              <p class="card-text text-white">A pleasant summer retreat and a snowy winter wonderland</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6 mt-2">
+          <div class="card"
+            style="background-image: url('https://hblimg.mmtcdn.com//content/hubble/img/mandarmani/mmt/destination/m_destination-mandarmoni-landscape_l_400_640.jpg'); background-repeat: no-repeat; background-size: cover;  height: 330px; ">
+            <div class="card-body " style="margin-top: 210px;">
+              <p class="card-text text-white">Spiritual Costel Toen in Karnataka</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+  <footer>
+    <div class="bg-color1 p-3 p-lg-5 p-md-4 p-sm-3">
+      <div class="row ">
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+          <h2>Why MakeMyTrip?</h2>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam exercitationem atque sit. Veniam sed, vel
+            commodi corporis ratione, quae voluptates error praesentium sint magnam laboriosam possimus ea dolorem
+            placeat! Accusantium.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod deleniti eum excepturi, ipsum ratione, maiores
+            praesentium rem veniam unde voluptatibus et consequuntur vero commodi dolores iusto, velit non itaque modi.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab iusto eos consequuntur accusamus facilis
+            voluptate illum delectus, officia necessitatibus quidem dolorem voluptatum, ullam impedit perferendis
+            ducimus unde recusandae culpa consectetur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis dolores natus facere pariatur molestias
+            nostrum ducimus enim iure accusamus a. Sit laborum eveniet consequuntur, minima saepe deserunt officia in
+            distinctio.
+          </p>
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+          <h2>Booking Flights With MakeMyTrip</h2>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam exercitationem atque sit. Veniam sed, vel
+            commodi corporis ratione, quae voluptates error praesentium sint magnam laboriosam possimus ea dolorem
+            placeat! Accusantium.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod deleniti eum excepturi, ipsum ratione, maiores
+            praesentium rem veniam unde voluptatibus et consequuntur vero commodi dolores iusto, velit non itaque modi.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab iusto eos consequuntur accusamus facilis
+            voluptate illum delectus, officia necessitatibus quidem dolorem voluptatum, ullam impedit perferendis
+            ducimus unde recusandae culpa consectetur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis dolores natus facere pariatur molestias
+            nostrum ducimus enim iure accusamus a. Sit laborum eveniet consequuntur, minima saepe deserunt officia in
+            distinctio.
+          </p>
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+          <h2>Domestic Flights With MakeMyTrip</h2>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam exercitationem atque sit. Veniam sed, vel
+            commodi corporis ratione, quae voluptates error praesentium sint magnam laboriosam possimus ea dolorem
+            placeat! Accusantium.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod deleniti eum excepturi, ipsum ratione, maiores
+            praesentium rem veniam unde voluptatibus et consequuntur vero commodi dolores iusto, velit non itaque modi.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab iusto eos consequuntur accusamus facilis
+            voluptate illum delectus, officia necessitatibus quidem dolorem voluptatum, ullam impedit perferendis
+            ducimus unde recusandae culpa consectetur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis dolores natus facere pariatur molestias
+            nostrum ducimus enim iure accusamus a. Sit laborum eveniet consequuntur, minima saepe deserunt officia in
+            distinctio.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="bg-dark text-white p-5">
+      <div class="d-lg-flex d-md-flex text-center justify-content-lg-between justify-content-md-between ">
+      <div>
+        <a href="https://twitter.com/makemytrip/" ><img src="data:image/png;base64,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" alt="logo1" height="40px" ></a>
+<a href="https://www.facebook.com/makemytrip/" ><img src="data:image/jpeg;base64,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" alt="logo2" height="40px" ></a>
+      </div>
+      <div >
+        <a href="#"><img src="data:image/jpeg;base64,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" alt="logo3" height="40px" class="rounded"></a>
+        <a href="#"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH0AAAB9CAMAAAC4XpwXAAAAY1BMVEUAd7f///8AdLYAarHl7vXz+fwkfLnG2+s7hL0AbbNEj8MAcLSlxd/7/f7e6vMVebhelsWSttcggby60uZ+q9EAZ7BnnMmtyOC/1+mbvdrV4++HsNM0h79uoctSk8Xo8/gAYK1We6lqAAADcklEQVRoge2ba6OiIBCGYahMCS8pdfJU7v//lWvXkzqEh12GvfB+6AvWEwjDXIDxm5Kq3DIabcsquVPZ9bM+SglEcMZAymP9pKtG0KHvf0A06kZXu5SYfVG6U1d6EwLe45sLvRZB4IyJuqcfqd/5Q3DkLJGB4IzJhFUB6RUrQw18P/Qlo7JwmEKyLQIIthwkrI7ZtgBC+/9ki7LurvtAvs80MV+fOv6ldk1pikF+8KEIbQIULR9rT4aHZALnfEM0+GKDwDk/kfQeziicK5LOa2zcqWYerA1wviBY9bIy0XnmHy/GS/1Ln/6HXndGek1AV0Y6gQuml0b6x78+8sK03Dk/+KfLg5FOsOIgM8E7Ch9DT7fXmzYU2wzsDHQa9yrFrR2VewM5Ak80DZzBdrrmE8K0ymo882pG6FQDHF7N/fJEnNxIV9Xj7beNpI+xpYayaU6ZIE9n3QV9DBcuuP9PBQN9qxVkqrVIpZRC69Qh/pZyPdB2MPNEMWxdp1+tIOB0qPPldcGqZVtXmUi/9wd6r1oN1b3GUbUytaasScZ+oVpuzt/hy8+pmVfnxw/Ietq6vDoeIKsFukGpJJtvrtBdZv/4PrIJ3JwumZk8g8vXi7ndX2E9SO7JXFhjTm8fX+vGzO6Vb2caTCe63r+F98M/0y10of8wO6NP/GoW3oVeWuH94M/CO9Brcwzy+tScme9An6ndjJnnjz4nAeGPzht75z3SF/YSkEc6t5cifNL31mnvk66sQYlPur389iv0Lm+TfGHO/djDQXd6XRaiFzsfjHxr8seV3j2LGJAWpgRM7mnk21f/EjTiAl1VeKF3ox0MDJ6ObZt3o493EFMC6OSDnkzMiMRfvW3SO9HP05ADTwDZrJ0LfYHYMIHSbS6GCx1Lp+G5N9uCd6Fje1eKlpdsmW4HusJ+B9AyR/v75zz22hmg8UX+Hu5C/8B8FnzSe6CjywhQJ98DHa2TGugWQx/pkR7pkR7pkR7pkR7pkR7pkR7pkf630BlWh32kmnA6evgNP5lri99TrK64e9agsSQgXvCQWJXOelhMTpJN6vM5tMgZb2U4bQrH6TuccUBRrrKhXuvXII9vWod4GD+6nlWJhndHK+Bt69tH/7ADNGHvy4S9KxT2nlTYO2Jh78cFvhsY9l5k4DuhYe/D8rB3gS8Kcw/6Jx8BQyoIZEryAAAAAElFTkSuQmCC" alt="logo4" height="40px" class="rounded"></a>
+      </div>
+    </div>
+    <br><br>
+    <p class="text-white text-center">@2023MAKEMYTRIPPVT.LTD. Country India USA UAE</p>
+    <!-- <P class="text-white text-center"></P> -->
+    </div>
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
