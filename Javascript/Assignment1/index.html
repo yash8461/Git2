@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Simple Calculator using Javascript</title>
+	<style>
+
+     div , button {
+       margin: 20px;
+       background-color: rgb(200, 236, 186);
+            
+     }
+
+
+
+    </style>
+</head>
+<body>
+	<div class="wrapper">
+		<h2>Simple Calculator</h2>
+        <div>
+       <form action="">
+        <label for="">Please enter first numbe</label>
+        <input id="num-one" name="num-one" type="number"> <br>
+         
+        <label for="">Please enter second number : </label>
+        <input id="num-two" name="num-two" type="number"><br><br>
+
+        <label for="">Please select operation you want to perform : </label>
+		<br>
+		<input id="box1" name="sign-area" type="radio" value="add"><b>Addition</b> 
+        <input id="box2" name="sign-area" type="radio" value="subtract"><b>Subtraction</b> 
+        <input id="box3" name="sign-area" type="radio" value="multiply"><b>Multiplication</b> 
+        <input id="box4" name="sign-area" type="radio" value="divide"><b>Division</b><br>
+		<br>
+		<button onclick="outcome()" type="button">calculate</button>
+        <button type="reset" name="re">Reset</button><br>
+        <label for="" > Result is : </label>
+        <h3 id="resultArea" class="re"></h3>
+
+
+          
+    </form>
+</div>
+		
+	</div>
+	
+	<script>
+	       function outcome() { 
+	           var x = Number(document.getElementById("num-one").value);
+	           var y = Number(document.getElementById("num-two").value);
+	           var z = 0;
+	           
+	           if (document.getElementById("box1").checked){
+	               z = x + y;
+	           }
+	           else if (document.getElementById("box2").checked){ 
+	               z = x - y;
+	           }
+	           else if (document.getElementById("box3").checked){
+	               z = x * y;
+	           }
+	           else{
+	               z = x / y;
+	           }
+	           document.getElementById("resultArea").innerHTML = " Result is : "+ String(z);    
+	       } 
+	</script>
+</body>
+</html>

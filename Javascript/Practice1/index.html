@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+
+ <script>
+
+
+const num1 = parseFloat(prompt("Enter first number: "));
+const num2 = parseFloat(prompt("Enter second number: "));
+const num3 = parseFloat(prompt("Enter third number: "));
+let largest;
+
+
+if(num1 >= num2 && num1 >= num3) {
+    largest = num1;
+}
+else if (num2 >= num1 && num2 >= num3) {
+    largest = num2;
+}
+else {
+    largest = num3;
+}
+
+
+let sum =0;
+
+if(num1>40)
+  sum=sum+num1;
+else if(num2>40)
+    sum=sum+num2;
+else if(num3>40)
+    sum=sum+num3;
+else
+    sum="All values less than 40";
+      
+
+console.log("The largest number is " + largest);
+console.log("sum : " + sum);
+
+
+
+
+ </script>
+
+</head>
+<body>
+  
+
+</body>
+</html>
