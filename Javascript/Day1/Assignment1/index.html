@@ -20,13 +20,13 @@
 		<h2>Simple Calculator</h2>
         <div>
        <form action="">
-        <label for="">Please enter first numbe</label>
+        <label for=""><b>Please enter first number :</b> </label>
         <input id="num-one" name="num-one" type="number"> <br>
          
-        <label for="">Please enter second number : </label>
+        <label for=""><b>Please enter second number :</b>  </label>
         <input id="num-two" name="num-two" type="number"><br><br>
 
-        <label for="">Please select operation you want to perform : </label>
+        <label for=""><b>Please select operation you want to perform : </b> </label>
 		<br>
 		<input id="box1" name="sign-area" type="radio" value="add"><b>Addition</b> 
         <input id="box2" name="sign-area" type="radio" value="subtract"><b>Subtraction</b> 
@@ -35,8 +35,8 @@
 		<br>
 		<button onclick="outcome()" type="button">calculate</button>
         <button type="reset" name="re">Reset</button><br>
-        <label for="" > Result is : </label>
-        <h3 id="resultArea" class="re"></h3>
+        <label for="" ><h3>Result is : </h3> </label>
+        <h3 id="resultArea"></h3>
 
 
           
@@ -63,7 +63,7 @@
 	           else{
 	               z = x / y;
 	           }
-	           document.getElementById("resultArea").innerHTML = " Result is : "+ String(z);    
+	           document.getElementById("resultArea").innerHTML =  String(z);    
 	       } 
 	</script>
 </body>
