@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id=""></p>
+    <script>
+
+
+        function fun1() {
+
+           
+
+            return new Promise(function (resolve, reject) {
+                setTimeout(() => {
+
+                  
+                    var str = prompt('Enter a string: ');
+
+
+
+                    if (typeof str == 'string') {
+                       
+                        let newString = "";
+                     
+                        for (let i = str.length - 1; i >= 0; i--) {
+                            newString += str[i];
+                        }
+                      
+                        console.log(newString);
+                       
+                        resolve();
+                    }
+                    else {
+                       reject(str)
+                    }
+                }, 500);
+            })
+            
+        }
+
+        fun1().then(function () {
+            console.log("String has been reversed")
+        }).catch(function (str) {
+            console.log("String has not been reversed "+str)
+        })
+    </script>
+
+</body>
+
+</html>
