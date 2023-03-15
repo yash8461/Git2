@@ -2,106 +2,93 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>JavaScript Form Validation using a sample registration form</title>
-    <meta name="keywords" content="example, JavaScript Form Validation, Sample registration form" />
-    <meta name="description"
-        content="This document is an example of JavaScript Form Validation using a sample registration form. " />
-    <link rel='stylesheet' href='js-form-validation.css' type='text/css' />
-    <script src="sample-registration-form-validation.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 
-<body onload="document.registration.userid.focus();">
-    <h1>Registration Form</h1>
+<body>
+    <form action="" name="myForm" onsubmit="return(validate());">
+        <table cellspacing="2" cellpadding="2" border="1">
 
-    <form name='registration' onSubmit="return formValidation();">
-        <ul>
-            <li><label for="userid">EmployeeID:</label></li>
-            <li><input type="text" name="userid" size="15" /></li>
-            <li><label for="username">Employee name:</label></li>
-            <li><input type="text" name="username" size="50" /></li>
-            <li><label for="age">Age:</label></li>
-            <li><input type="number" name="age" size="2" /></li>
+            <tr>
+                <td align="right">Name</td>
+                <td><input type="text" name="Name" /></td>
+            </tr>
 
+            <tr>
+                <td align="right">EMail</td>
+                <td><input type="text" name="EMail" /></td>
+            </tr>
 
-            <li><label id="gender">Gender:</label></li>
-            <li><input type="radio" name="msex" value="Male" /><span>Male</span></li>
-            <li><input type="radio" name="fsex" value="Female" /><span>Female</span></li>
+            <tr>
+                <td align="right">Zip Code</td>
+                <td><input type="text" name="Zip" /></td>
+            </tr>
 
-            <li><label for="username">designation:</label></li>
-            <li><input type="text" name="username" size="12" /></li>
+            <tr>
+                <td align="right">Country</td>
+                <td>
+                    <select name="Country">
+                        <option value="-1" selected>[choose yours]</option>
+                        <option value="1">USA</option>
+                        <option value="2">UK</option>
+                        <option value="3">INDIA</option>
+                    </select>
+                </td>
+            </tr>
 
-            <li><label for="salary">Salary:</label></li>
-            <li><input type="number" name="username" size="12" /></li>
+            <tr>
+                <td align="right"></td>
+                <td><input type="submit" value="Submit" /></td>
+            </tr>
 
-
-
-
-
-            <li><label for="country">Location:</label></li>
-            <li><select name="country">
-                    <option selected="" value="Default">(Please select a Location)</option>
-                    <option value="AF">Australia</option>
-                    <option value="AL">Canada</option>
-                    <option value="DZ">India</option>
-                    <option value="AS">Russia</option>
-                    <option value="AD">USA</option>
-                </select></li>
-            <li><label for="email">Email:</label></li>
-            <li><input type="text" name="email" size="50" /></li>
-
-            <li><label for="doj">Date of Joining:</label></li>
-            <li><input type="date" name="doj" /></li>
-
-            <li><label for="cno">contact number:</label></li>
-            <li><input type="number" name="cno" size="10" /></li>
-
-            <li><input type="submit" name="submit" value="Submit" /></li>
-        </ul>
+        </table>
     </form>
+
 
     <script>
 
-        function formValidation() {
-            var uid = document.registration.userid;
+        function validate() {
 
-            var uname = document.registration.username;
 
-            var ucountry = document.registration.country;
-            var uzip = document.registration.zip;
-            var uemail = document.registration.email;
-            var umsex = document.registration.msex;
-            var ufsex = document.registration.fsex;
+            var emailID = document.myForm.EMail.value;
+            atpos = emailID.indexOf("@");
+            dotpos = emailID.lastIndexOf(".");
 
-            if (userid_validation(uid, 5, 12)) {
-                if (passid_validation(passid, 7, 12)) {
-                    if (allLetter(uname)) {
-                        if (alphanumeric(uadd)) {
-                            if (countryselect(ucountry)) {
-                                if (allnumeric(uzip)) {
-                                    if (ValidateEmail(uemail)) {
-                                        if (validsex(umsex, ufsex)) {
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+            if (atpos < 1 || (dotpos - atpos < 2)) {
+                alert("Please enter correct email ID")
+                document.myForm.EMail.focus();
+                return false;
+
             }
-            return false;
-        }
 
-        function userid_validation(uid, mx, my) {
-            var uid_len = uid.value.length;
-            if (uid_len == 0 || uid_len >= my || uid_len < mx) {
-                alert("User Id should not be empty / length be between " + mx + " to " + my);
-                uid.focus();
+
+
+            if (document.myForm.Name.value == "") {
+                alert("Please provide your name!");
+                document.myForm.Name.focus();
                 return false;
             }
-            return true;
-        }
+            if (document.myForm.EMail.value == "") {
+                alert("Please provide your Email!");
+                document.myForm.EMail.focus();
+                return false;
+            }
+            if ( document.myForm.Zip.value.length >= 5) {
 
+                alert("Please provide a zip in the format #####.");
+                document.myForm.Zip.focus();
+                return false;
+            }
+            if (document.myForm.Country.value == "-1") {
+                alert("Please provide your country!");
+                return false;
+            }
+            return (true);
+
+        }
 
     </script>
 

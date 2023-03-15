@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/jquery-3.6.4.min.js"></script>
+</head>
+
+<table id="data"></table>
+
+<body>
+    <script>
+
+function get(result){
+        var result = `<tr>
+                           <th>Id</th>
+                           <th>Name</th>
+                           <th>Email</th>
+                           <th>Gender </th>
+                           <th>Status</th>
+                           </tr>`
+
+
+
+        for (let i = 0; i < result.length; i++) {
+
+            result += `<tr>
+                        <td> ${result[i].id}</td>
+                        <td>${result[i].name}</td>
+                        <td>${result[i].email}</td>
+                        <td>${result[i].gender}</td>
+                        <td>${result[i].status}</td>
+                        
+                           </tr>`
+        }
+
+        $("#data").html(result);
+
+
+    }
+
+
+        var settings = {
+            "url": "https://gorest.co.in/public/v2/users",
+            "method": "GET",
+            "timeout": 0,
+        };
+
+        $.ajax(settings).done(function (response) {
+            // console.log(response);
+
+            get(JSON.parse(response));
+
+
+
+        });
+
+    </script>
+</body>
+
+</html>
