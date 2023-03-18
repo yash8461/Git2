@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+
+
+
+  <form class="shadow-md hover:shadow-2xl rounded px-8 pt-6 mb-4 m-24 w-96 p-2 " id="form" action="">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+        Name
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="name" type="text" placeholder="Name" name="name">
+    </div>
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+        Email
+      </label>
+      <input
+        class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+        id="email" type="text" placeholder="email" name="email">
+    </div>
+
+
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="">
+        Gender
+      </label>
+      <div class="flex justify-evenly">
+        <div class="mb-4 ">
+          <input class="" name="gender" id="" type="radio">
+          <label class="text-gray-700 text-sm font-bold mb-2" for="">
+            Male
+          </label>
+        </div>
+
+        <div class="mb-4">
+          <input class="" name="gender" id="" type="radio">
+          <label class=" text-gray-700 text-sm font-bold mb-2" for="">
+            Female
+          </label>
+        </div>
+
+      </div>
+    </div>
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="">
+        Status
+      </label>
+      <div class="flex justify-evenly">
+        <div class="mb-4">
+          <input class="" name="status" id="" type="radio">
+          <label class="text-gray-700 text-sm font-bold mb-2" for="">
+            Active
+          </label>
+        </div>
+
+        <div class="mb-4">
+          <input class="" name="status" id="" type="radio">
+          <label class=" text-gray-700 text-sm font-bold mb-2" for="">
+            Inactive
+          </label>
+        </div>
+      </div>
+      <div class="flex justify-between ">
+
+        
+        <input  class="block text-gray-700 text-sm font-bold bg-green-300 rounded-2xl cursor-pointer p-2 hover:bg-green-400 " id="postData" type="button" value="submit">
+        <button id="getData"
+          class="block text-gray-700 text-sm font-bold bg-green-300 rounded-2xl cursor-pointer p-2 hover:bg-green-400 "
+          type="button">View</button>
+
+      </div>
+    </div>
+  </form>
+  <br><br>
+
+
+  <div id="data" class="flex flex-wrap "></div>
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      $('#getData').click(function(){
+
+      var settings = {
+        "url": "https://gorest.co.in/public/v2/users",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+          "Authorization": "Bearer da2202a16246009c93b2e8c7dbfd4812af10d94e75c6d76cd8c8989ab0420dcc"
+        },
+      };
+
+      $.ajax(settings).done(function (response) {
+        // console.log(response);
+        // alert("done");
+        var custsHTML = "";
+        for (let i = 0; i < response.length; i++) {
+
+          custsHTML += `
+              
+             <div class=" rounded overflow-hidden shadow-md hover:shadow-3xl hover:bg-blue-300 w-80 bg-blue-200 m-4 h-62">
+  <img class="w-24 ml-5" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="">
+  <div class="px-6 py-4">
+    <div class="font-bold text-xl mb-2">Id ${response[i].id}</div>
+    <p class="text-gray-700 text-base"><strong>Name: </strong> ${response[i].name} </p>
+    <p class="text-gray-700 text-base"><strong>Email: </strong>${response[i].email} </p>
+    <p class="text-gray-700 text-base"><strong>Gender: </strong> ${response[i].gender} </p>
+    <p class="text-gray-700 text-base"><strong>Status: </strong> ${response[i].status} </p>
+    </div>
+
+    
+</div>  `
+        }
+        $("#data").html(custsHTML);
+
+      });
+
+
+      })
+
+
+
+
+      $('#postData').click(function () {
+
+
+
+
+        var name = $("input[name='name']").val();
+        var email = $("input[name='email']").val();
+
+        var gender = $("input[name='gender']:checked").val();
+        var status = $("input[name='status']:checked").val();
+
+        var settingss = {
+          "url": "https://gorest.co.in/public/v2/users",
+          "method": "POST",
+          "timeout": 0,
+          "headers": {
+            "Authorization": "Bearer da2202a16246009c93b2e8c7dbfd4812af10d94e75c6d76cd8c8989ab0420dcc",
+            "Content-Type": "application/json"
+          },
+
+          "data": JSON.stringify({
+            "name": name,
+            "email": email,
+            "gender": gender,
+            "status": status
+          }),
+        };
+
+        $.ajax(settingss).done(function (response) {
+          alert("success");
+
+
+        });
+
+      });
+
+
+
+    });  
+  </script>
+
+
+</body>
+
+</html>

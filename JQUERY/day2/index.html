@@ -21,7 +21,7 @@
 
 
                 <form>
-                    
+
                     <div class="mb-3">
                         <label>Name</label>
                         <input type="text" name="name" class="form-control" required>
@@ -31,30 +31,30 @@
                         <label>Email Address</label>
                         <input type="text" name="email" class="form-control" required>
                     </div>
-                  
-                   
+
+
                     <label for="">Gender</label><br><br>
                     <div class="form-check form-check-inline mb-3">
-                      
+
                         <input class="form-check-input" type="radio" name="gender" id="" value="Male">
                         <label class="form-check-label" for="">Male</label>
-                      </div>
-                      <div class="form-check form-check-inline mb-3" >
+                    </div>
+                    <div class="form-check form-check-inline mb-3">
                         <input class="form-check-input" type="radio" name="gender" id="" value="Female">
                         <label class="form-check-label" for="">Female</label>
-                      </div><br>
+                    </div><br>
 
-                      <label for="">Status</label><br><br>
-                      <div class="form-check form-check-inline mb-3">
-                        
-                          <input class="form-check-input" type="radio" name="status" id="" value="active">
-                          <label class="form-check-label" for="">	active</label>
-                        </div>
-                        <div class="form-check form-check-inline mb-3" >
-                          <input class="form-check-input" type="radio" name="status" id="" value="inactive">
-                          <label class="form-check-label" for="">	inactive</label> 
-                        </div><br><br>
-                     
+                    <label for="">Status</label><br><br>
+                    <div class="form-check form-check-inline mb-3">
+
+                        <input class="form-check-input" type="radio" name="status" id="" value="active">
+                        <label class="form-check-label" for=""> active</label>
+                    </div>
+                    <div class="form-check form-check-inline mb-3">
+                        <input class="form-check-input" type="radio" name="status" id="" value="inactive">
+                        <label class="form-check-label" for=""> inactive</label>
+                    </div><br><br>
+
 
                     <button type="submit" id="submit" class="btn btn-success save-btn">Post</button>
                     <button type="button" id="getData" class="btn btn-success save-btn">get</button>
@@ -89,17 +89,32 @@
         $(document).ready(function () {
 
             $('#getData').click(function () {
-                $.get("https://gorest.co.in/public/v2/users", function (data, status) {
-                    alert("Status: " + status);
+
+
+
+
+
+
+                var settings = {
+                    "url": "https://gorest.co.in/public/v2/users",
+                    "method": "GET",
+                    "timeout": 0,
+                    "headers": {
+                        "Authorization": "Bearer da2202a16246009c93b2e8c7dbfd4812af10d94e75c6d76cd8c8989ab0420dcc"
+                    },
+                };
+
+                $.ajax(settings).done(function (response) {
+                    // alert("Status: Success  ");
                     var custsHTML = "";
-                    for (let i = 0; i < data.length; i++) {
+                    for (let i = 0; i < response.length; i++) {
 
                         custsHTML += `<tr>
-                        <td> ${data[i].id}</td>
-                        <td>${data[i].name}</td>
-                        <td>${data[i].email}</td>
-                        <td>${data[i].gender}</td>
-                        <td>${data[i].status}</td>
+                        <td> ${response[i].id}</td>
+                        <td>${response[i].name}</td>
+                        <td>${response[i].email}</td>
+                        <td>${response[i].gender}</td>
+                        <td>${response[i].status}</td>
                         <td><button class='btn btn-info btn-edit ms-2 mt-2'>Edit</button><button class='btn btn-danger btn-delete ms-2 mt-2'>Delete</button></td>
                    </tr>`
                     }
@@ -111,54 +126,55 @@
 
 
 
-            $("form").submit(function (e) {
-               
-            
-               
-              
+            $('#submit').click(function () {
+
+
+
 
                 var name = $("input[name='name']").val();
                 var email = $("input[name='email']").val();
-                var id = $("input[name='id']").val();
+
                 var gender = $("input[name='gender']:checked").val();
                 var status = $("input[name='status']:checked").val();
 
-                $('#submit').click(function () {
-                $.post("https://gorest.co.in/public/v2/users",
-                        {
-                            id: id, 
-                            name: name,
-                            email:  email,
-                            gender:gender,
-                            status:status
-                        },
-                        function (data, status) {
-                            alert("Data: " + data + "\nStatus: " + status);
-                        });
-                    });
-                e.preventDefault();
+                var settingss = {
+                    "url": "https://gorest.co.in/public/v2/users",
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                        "Authorization": "Bearer da2202a16246009c93b2e8c7dbfd4812af10d94e75c6d76cd8c8989ab0420dcc",
+                        "Content-Type": "application/json"
+                    },
 
-                $(".data-table tbody").append("<tr   nameHere='" + name + "' emailHere='" + email + " 'genderHere='" + gender + " 'statusHere='" + status + "' ><td>" + id + "</td><td>" + name + "</td><td>" + email + "</td><td>" + gender + "</td><td>" + status + "</td><td><button class='btn btn-info btn-edit ms-2 mt-2'>Edit</button><button class='btn btn-danger btn-delete ms-2 mt-2'>Delete</button></td></tr>");
+                    "data": JSON.stringify({
+                        "name": name,
+                        "email": email,
+                        "gender": gender,
+                        "status": status
+                    }),
+                };
 
-                $("input[name='id']").val('');
-                $("input[name='name']").val('');
-                $("input[name='email']").val('');
-                $("input[name='gender']").val('');
-                $("input[name='status']").val('');
+                $.ajax(settingss).done(function (response) {
+                    alert("success");
+
+
+                });
+
             });
+
 
             $("body").on("click", ".btn-delete", function () {
                 $(this).parents("tr").remove();
             });
 
             $("body").on("click", ".btn-edit", function () {
-                var id = $(this).parents("tr").attr('idHere');
+
                 var name = $(this).parents("tr").attr('nameHere');
                 var email = $(this).parents("tr").attr('emailHere');
                 var gender = $(this).parents("tr").attr('genderHere');
                 var status = $(this).parents("tr").attr('statusHere');
 
-                $(this).parents("tr").find("td:eq(0)").html('<input name="edit_name" class="form-control" value="' + id + '">');
+
                 $(this).parents("tr").find("td:eq(1)").html('<input name="edit_name" class="form-control" value="' + name + '">');
                 $(this).parents("tr").find("td:eq(2)").html('<input name="edit_email" class="form-control" value="' + email + '">');
                 $(this).parents("tr").find("td:eq(3)").html('<input name="edit_name" class="form-control" value="' + gender + '">');
