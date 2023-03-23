@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<body>
+<div id="form">
+
+</div>
+    <div id="output">
+
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script>
+    var container = $('<div/>');
+    var form = $('<form/>');
+    var output = $('<div/>');
+    var inputText = $('<input type="text"/>');
+    var inputEmail = $('<input type="text"/>');
+    // ================================
+
+    var empName = $('<div/>').append(
+        $('<label/>')
+            .attr('for', 'name')
+            .text("Name").append(inputText.attr('id', 'name')));
+
+
+
+    // ==========================email===
+
+    var emailAddress = $('<div/>').append(
+        $('<label/>')
+            .attr('for', 'email')
+            .text("email").append(inputEmail.attr('id', 'email')));
+
+
+    // ==========================gender===
+    var gender = $('<div/>').text('Select Gender ');
+
+    var male = $('<label/>')
+        .attr('for', 'Male')
+        .text("Male").append($('<input type="radio"/>').attr('name', 'gender').attr('id','male').attr('value','male'))
+        ;
+
+    //  =============female========================       
+
+    var female = $('<label/>')
+        .attr('for', 'feMale')
+        .text("Female").append($('<input type="radio"/>').attr('name', 'gender').attr('id','female').attr('value','female'))
+        ;
+    gender.append(male, female);
+
+
+
+    // ==============================
+
+    // ==========================Status===
+    var empStatus = $('<div/>').text('Select status ');
+
+    var active = $('<label/>')
+        .attr('for', 'active')
+        .text("active").append($('<input type="radio"/>').attr('name', 'status').attr({id: 'active',value:'active'}))
+        ;
+
+    //  =============female========================       
+
+    var inactive = $('<label/>')
+        .attr('for', 'inactive')
+        .text("inactive").append($('<input type="radio"/>').attr('name', 'status').attr({id: 'inactive',value:'inactive'}))
+        ;
+    empStatus.append(active, inactive);
+
+
+
+    // ==============================
+
+    var getData = $('<div/>')
+    getData.append(
+        $('<input type="button"/>').attr({ id: 'getData', value: 'getData' }));
+        getData.addClass('get')
+    // ==============================
+
+    var postData1 = $('<div/>')
+    postData1.append(
+        $('<input type="button"/>').attr({ id: 'postData', value: 'postData' }));
+postData1.addClass('post')
+        var update = $('<div/>')
+        update.append(
+        $('<input type="button"/>').attr({ id: 'update', value: 'update' }));
+        update.addClass('update11')
+    var formButton = $('<div/>').append(getData, postData1)
+
+    form.append(empName, emailAddress, gender, empStatus, formButton,update)
+    form.addClass('form')
+    form.appendTo(container);
+    container.appendTo('#form')
+    $('#update').hide();
+
+
+
+
+    function patch(id){
+        alert(id)
+        var settings = {
+            url: 'https://gorest.co.in/public/v2/users/'+id,
+            method: 'PATCH',
+            timeout: 0,
+            headers: {
+                Authorization:
+                    'Bearer e4a0a586eaa867f6eddf01ceb1bf8da3f4b4953d0471c6cf9eed57b291dc4697',
+                    "Content-Type": "application/json"
+            },
+  "data": JSON.stringify({
+    "name": $('#name').val() ,
+    "email":$('#email').val() ,
+    "gender": $('input[name=gender]:checked').val(),
+    "status":  $('input[name=status]:checked').val()
+  }),
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+    }
+
+function post(){
+
+    var settings = {
+            url: 'https://gorest.co.in/public/v2/users',
+            method: 'POST',
+            timeout: 0,
+            headers: {
+                Authorization:
+                    'Bearer e4a0a586eaa867f6eddf01ceb1bf8da3f4b4953d0471c6cf9eed57b291dc4697',
+                    "Content-Type": "application/json"
+            },
+  "data": JSON.stringify({
+    "name": $('#name').val() ,
+    "email":$('#email').val() ,
+    "gender": $('input[name=gender]:checked').val(),
+    "status":  $('input[name=status]:checked').val()
+  }),
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+}
+
+    function get() {
+        $('#update').hide();
+        var settings = {
+            url: 'https://gorest.co.in/public/v2/users',
+            method: 'GET',
+            timeout: 0,
+            headers: {
+                Authorization:
+                    'Bearer e4a0a586eaa867f6eddf01ceb1bf8da3f4b4953d0471c6cf9eed57b291dc4697',
+            },
+        };
+
+        $.ajax(settings).done(function (response) {
+            call(response);
+        });
+    }
+
+    function call(dum) {
+        $("#output").html(' ')
+        var card_container = $('<div />').html(' ').addClass('container');
+        for (var d of dum) {
+            var card1 =$('<div />').html(' ').addClass('card');;
+            var h1 = $('<h1/>').text(d.name);
+            var h2 = $('<h2 />').text(d.email);
+            var sta = $('<h4>').text(d.status);
+            var del = $('<button/>');
+            del.text("Delete").attr('onclick', `del(${d.id})`);
+            del.addClass('dbtn')
+            var ins = $('<button/>');
+            ins.text("Update").attr('onclick', `insert(${d.id})`);
+            ins.addClass('ubtn')
+
+
+            var pre = d.gender === 'male' ? 'Mr,' : 'Ms,';
+            var gen = $('<h3/>').text(pre);
+
+            card1 
+                .append(gen,
+                    h1,
+                    sta
+                    ,
+                    h2,
+                    del,ins
+                );
+
+            card1.appendTo(card_container);
+        }
+
+       
+        card_container.appendTo('#output');
+    }
+
+    function del(id) {
+        var settings = {
+            url: 'https://gorest.co.in/public/v2/users/'+id,
+            method: 'DELETE',
+            timeout: 0,
+            headers: {
+                Authorization:
+                    'Bearer e4a0a586eaa867f6eddf01ceb1bf8da3f4b4953d0471c6cf9eed57b291dc4697',
+            },
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+     alert('data Deleted')
+        get();
+    }
+
+    function insert(id) {
+        var settings = {
+            url: 'https://gorest.co.in/public/v2/users/'+id,
+            method: 'GET',
+            timeout: 0,
+            headers: {
+                Authorization:
+                    'Bearer e4a0a586eaa867f6eddf01ceb1bf8da3f4b4953d0471c6cf9eed57b291dc4697',
+            },
+
+        };
+
+        $.ajax(settings).done(function (response) {
+            put(response);
+        });
+     
+        
+    }
+    function put(daa){
+        $('#name').val(daa.name);
+        $('#email').val(daa.email);
+        if(daa.gender === 'male'){
+            $('#male').prop('checked', true);
+        }
+        else{
+            $('#female').prop('checked', true);
+        }
+        if(daa.status === 'active'){
+            $('#active').prop('checked', true);
+        }
+        else{
+            $('#inactive').prop('checked', true);
+        }
+        $('#form').val(daa.id)
+        $('#update').show();
+    }
+
+
+
+
+    $('#getData').click(function () {
+
+        get();
+    });
+    $('#postData').click(function () {
+
+post();
+});
+$('#update').click(function () {
+alert('Update')
+patch($('#form').val());
+get();
+});
+get();
+</script>
+
+<style type="text/tailwindcss">
+    @layer utilities {
+
+
+        .card{
+            @apply  w-full rounded-lg sm:w-1/3 border  bg-white p-2 shadow-xl my-5  hover:scale-105 
+        }
+        .container{
+            @apply sm:flex p-5 justify-around gap-x-4;
+        }
+          .form{
+           @apply flex flex-col gap-y-10 p-4 border  bg-white bg-opacity-20
+          rounded-xl  bg-white bg-opacity-20
+          rounded-xl
+          m-1
+          lg:w-1/4
+          sm:w-1/2 sm:mx-auto
+          p-2
+          shadow-2xl
+          hover:scale-105
+          text-gray-800 text-lg
+          }
+          input[type=text]{
+            @apply border-b-2 w-full  
+          }
+          .get{
+            @apply bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-xl text-white  px-5 py-2.5 text-center mr-2 mb-2;          }
+
+            .post{
+            @apply bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-xl text-white  px-5 py-2.5 text-center mr-2 mb-2;          }
+            .update11{
+            @apply bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-xl text-white  text-center mr-2 mb-2;       }
+
+          label{
+            @apply ml-6
+          }
+          .dbtn{
+            @apply bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 my-1;
+          }
+          .ubtn{
+            @apply bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2  my-1;
+          }
+          
+          
+        }
+      </style>
+
+</html>
