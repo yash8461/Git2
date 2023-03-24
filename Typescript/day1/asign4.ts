@@ -26,6 +26,9 @@ interface Product {
     // Make a purchase and reduce the product quantity
     makePurchase(productId: string, quantity: number) {
       const product = this.getProduct(productId);
+
+      console.log("This : \n" )
+      console.log(product)
       if (product && product.quantity >= quantity) {
         product.quantity -= quantity;
         console.log(`Purchase successful. Remaining quantity: ${product.quantity}`);

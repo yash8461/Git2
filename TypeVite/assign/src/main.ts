@@ -1,54 +1,89 @@
-export{}
+export { }
+// this
 
-interface Employee {
-  ID: number;
-  FirstName: string;
-  LastName: string;
-  Address: string;
-  Salary: number;
-}
-
-
-interface Emp {
-  ID: number;
-  FullName: string;
-  FlatNumber: string;
-  City: string;
-  State: string;
-  BasicSalary: number;
-  PF: number;
-}
-
-
-const employees: Employee[] = [
-  { ID: 1, FirstName: "John", LastName: "Doe", Address: "123 Main St, New York", Salary: 50000 },
-  { ID: 2, FirstName: "Jane", LastName: "Smith", Address: "456 Second Ave, Los Angeles", Salary: 60000 },
-  { ID: 3, FirstName: "Bob", LastName: "Johnson", Address: "789 Third St, Chicago Ahh", Salary: 70000 },
-  { ID: 4, FirstName: "Alice", LastName: "Williams", Address: "101 Fourth Ave, Miami Gujraat", Salary: 80000 },
-  { ID: 5, FirstName: "David", LastName: "Brown", Address: "111 Fifth St, San Francisco ", Salary: 90000 }
+const employees: any[] = [
+  { ID: 1, FirstName: "Aay", LastName: "Singh", Address: "123 Ahemdabad", Salary: 50000 },
+  { ID: 2, FirstName: "Raj", LastName: "Yadav", Address: "456 Second Ave", Salary: 60000 },
+  { ID: 3, FirstName: "Subham", LastName: "Rajput", Address: "789 Third St", Salary: 70000 },
+  { ID: 4, FirstName: "Elon", LastName: "Musk", Address: "101 Fourth Ave", Salary: 80000 },
+  { ID: 5, FirstName: "Bill", LastName: "Gates", Address: "111 Fifth St", Salary: 90000 },
 ];
 
 
-function splitAddress(address: string): [string, string, string] {
-  const [flatNumber, cityState] = address.split(",");
-  const [city, state] = cityState.trim().split(" ");
-  return [flatNumber.trim(), city.trim(), state.trim()];
+function searchEmployeeByID(ID: number): any {
+  const index = employees.findIndex((employe) => employe.ID === ID);
+  return index !== -1 ? employees[index] : undefined;
+
 }
 
-const emp: Emp[] = employees.map((employee) => {
-  const [FlatNumber, City, State] = splitAddress(employee.Address);
 
-  const BasicSalary = employee.Salary;
-  const PF = Math.round(0.12 * BasicSalary);
-  const FullName = `${employee.FirstName} ${employee.LastName}`;
-  return { ID: employee.ID, FullName, FlatNumber, City, State, BasicSalary, PF };
-});
+function insertEmployee(employee: any): void {
+  employees.push(employee);
+}
 
 
-console.log(emp);
+function deleteEmployeeByID(ID: number): void {
+  const index = employees.findIndex((employee) => employee.ID === ID);
+  if (index !== -1) {
+    employees.splice(index, 1);
+  }
+}
 
 
-const totalSalary = employees.reduce((sum, employee) => sum + employee.Salary, 0);
 
 
-console.log(`Total Salary: ${totalSalary}`);
+
+var str = "";
+
+for (let i = 0; i < employees.length; i++) {
+
+
+
+  str +=
+
+    `
+                                          
+
+<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+${employees[i].ID}
+</th>
+<td class="px-6 py-4">
+${employees[i].FirstName}
+</td>
+<td class="px-6 py-4">
+${employees[i].LastName}
+</td>
+<td class="px-6 py-4">
+${employees[i].Address}
+</td>
+<td class="px-6 py-4">
+${employees[i].Salary}
+</td>
+
+</tr>
+
+
+ `
+
+}
+document.querySelector<HTMLDivElement>('#output')!.innerHTML = str;
+
+console.log("All the Employees\n")
+console.log(employees);
+console.log("Search by indexNumber\n")
+console.log(employees[3]);
+console.log("Search by EmployeeByID\n")
+console.log(searchEmployeeByID(3))
+
+console.log("List after push\n")
+insertEmployee({ ID: 6, FirstName: "Karan", LastName: "Davis", Address: "222 Sixth Ave", Salary: 100000 });
+console.log(employees);
+
+console.log("Delete by EmployeeByID\n")
+deleteEmployeeByID(3);
+
+console.log(employees); 
+
+
+

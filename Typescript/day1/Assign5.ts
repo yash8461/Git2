@@ -1,11 +1,11 @@
-interface Employee {
-  id: string;
-  name: string;
-  city: string;
-  doj: Date;
-}
+// interface Employee {
+//   id: string;
+//   name: string;
+//   city: string;
+//   doj: Date;
+// }
 
-const employees: Employee[] = [
+const employees: any[] = [
   { id: "e1", name: "John Doe", city: "Mumbai", doj: new Date("2020-01-01") },
   { id: "e2", name: "Jane Smith", city: "Delhi", doj: new Date("2021-05-01") },
   { id: "e3", name: "Bob Johnson", city: "Mumbai", doj: new Date("2019-11-01") },
