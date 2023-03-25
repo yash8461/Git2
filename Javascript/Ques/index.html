@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+<div></div>
+    <div class="flex justify-center " id="data"></div>
+    <script>
+
+ var myHeaders = new Headers();
+myHeaders.append("Authorization", "Bearer da2202a16246009c93b2e8c7dbfd4812af10d94e75c6d76cd8c8989ab0420dcc");
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+fetch("data.json", requestOptions)
+  .then(response => response.json())
+  .then(result => get(result))
+  .catch(error => console.log('error', error));
+
+  function get(result){
+   
+    var str ="";
+
+    for (var i=0;i<result.length;i++){
+
+
+    //     $(`<div class="flex justify-center "/>`)
+    //     .append(`<div
+    // class="block max-w-sm rounded-lg bg-white shadow-lg dark:bg-neutral-700"/>`)
+    // .html(` <img
+    //     class="rounded-t-lg"
+    //     // src=""
+    //     alt="" />`)
+    //     .append(`<div class="p-6"/>`)
+    //     .append(`<h5
+    //     class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50"/>
+       
+    //   `).text(value.username)
+    //   .append(` <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200"/>`)
+    //   .appendTo("#container")
+    
+str +=`
+    <div class="bg-gray-100">
+  <div
+    class="block max-w-sm  shadow-md bg-white m-8  hover:shadow-lg ">
+ 
+
+
+      <img
+        class="  w-14 ml-20 pt-10 "
+        src=" ${result[i].profileURL} "
+        alt="" />
+        
+    <div class="p-6 ">
+      <h5
+        class="mb-2 text-xl font-medium  ml-10 ">
+        ${result[i].firstName}   ${result[i].lastName} 
+      </h5>
+      <p class="mb-4  text-yellow-400 ">
+        ${result[i].email}
+      </p>
+      
+    </div>
+  </div>
+</div>
+`
+    
+
+    }
+    document.getElementById("data").innerHTML = str;
+   
+
+
+  }
+
+
+  
+
+    </script>
+</body>
+</html>
