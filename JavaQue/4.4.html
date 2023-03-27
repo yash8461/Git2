@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+
+    function freeShipping(order) {
+        const totalCost = Object.values(order).reduce((acc, curr) => acc + curr, 0);
+        return totalCost > 50;
+      }
+    
+      console.log(freeShipping({ "Shampoo": 5.99, "Rubber Ducks": 15.99 })); // false
+    console.log(freeShipping({ "Flatscreen TV": 399.99 })); // true
+    console.log(freeShipping({ "Monopoly": 11.99, "Secret Hitler": 35.99, "Bananagrams": 13.99 })); // true
+  </script>
+</body>
+</html>
+
+

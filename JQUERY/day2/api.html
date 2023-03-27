@@ -75,8 +75,10 @@
       </div>
       <div class="flex justify-between ">
 
-        
-        <input  class="block text-gray-700 text-sm font-bold bg-green-300 rounded-2xl cursor-pointer p-2 hover:bg-green-400 " id="postData" type="button" value="submit">
+
+        <input
+          class="block text-gray-700 text-sm font-bold bg-green-300 rounded-2xl cursor-pointer p-2 hover:bg-green-400 "
+          id="postData" type="submit" value="submit">
         <button id="getData"
           class="block text-gray-700 text-sm font-bold bg-green-300 rounded-2xl cursor-pointer p-2 hover:bg-green-400 "
           type="button">View</button>
@@ -93,24 +95,23 @@
   <script type="text/javascript">
     $(document).ready(function () {
 
-      $('#getData').click(function(){
+      $('#getData').click(function () {
 
-      var settings = {
-        "url": "https://gorest.co.in/public/v2/users",
-        "method": "GET",
-        "timeout": 0,
-        "headers": {
-          "Authorization": "Bearer da2202a16246009c93b2e8c7dbfd4812af10d94e75c6d76cd8c8989ab0420dcc"
-        },
-      };
+        var settings = {
+          "url": "https://gorest.co.in/public/v2/users",
+          "method": "GET",
+          "timeout": 0,
+          "headers": {
+            "Authorization": "Bearer da2202a16246009c93b2e8c7dbfd4812af10d94e75c6d76cd8c8989ab0420dcc"
+          },
+        };
 
-      $.ajax(settings).done(function (response) {
-        // console.log(response);
-        // alert("done");
-        var custsHTML = "";
-        for (let i = 0; i < response.length; i++) {
+        $.ajax(settings).done(function (response) {
+          
+          var custsHTML = "";
+          for (let i = 0; i < response.length; i++) {
 
-          custsHTML += `
+            custsHTML += `
               
              <div class=" rounded overflow-hidden shadow-md hover:shadow-3xl hover:bg-blue-300 w-80 bg-blue-200 m-4 h-62">
   <img class="w-24 ml-24 " src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="">
@@ -120,14 +121,20 @@
     <p class="text-gray-700 text-base"><strong>Email: </strong>${response[i].email} </p>
     <p class="text-gray-700 text-base"><strong>Gender: </strong> ${response[i].gender} </p>
     <p class="text-gray-700 text-base"><strong>Status: </strong> ${response[i].status} </p>
+    <button id="edit" onclick="update(${response[i].id})"
+          class="block text-gray-700 text-sm font-bold bg-green-300 rounded-2xl cursor-pointer p-2 hover:bg-green-400 "
+          type="button">Edit</button>
+          <button id="delete" onclick="delet(${response[i].id})"
+          class="block text-gray-700 text-sm font-bold bg-green-300 rounded-2xl cursor-pointer p-2 hover:bg-green-400 "
+          type="button">Delete</button>
     </div>
 
     
 </div>  `
-        }
-        $("#data").html(custsHTML);
+          }
+          $("#data").html(custsHTML);
 
-      });
+        });
 
 
       })
@@ -135,18 +142,13 @@
 
 
 
-      $('#postData').click(function () {
+      $("#postData").click(function () {
 
 
+           
 
 
-        var name = $("input[name='name']").val();
-        var email = $("input[name='email']").val();
-
-        var gender = $("input[name='gender']:checked").val();
-        var status = $("input[name='status']:checked").val();
-
-        var settingss = {
+        var settings = {
           "url": "https://gorest.co.in/public/v2/users",
           "method": "POST",
           "timeout": 0,
@@ -154,43 +156,95 @@
             "Authorization": "Bearer da2202a16246009c93b2e8c7dbfd4812af10d94e75c6d76cd8c8989ab0420dcc",
             "Content-Type": "application/json"
           },
-
           "data": JSON.stringify({
-            "name": name,
-            "email": email,
-            "gender": gender,
-            "status": status
+            "name": $('#name').val(),
+            "email": $('#email').val(),
+            "gender": $('input[name=gender]:checked').val(),
+            "status": $('input[name=status]:checked').val()
+            
           }),
+          
         };
+       
 
-        $.ajax(settingss).done(function (response) {
-          alert("success");
-
-
+        $.ajax(settings).done(function (response) {
+          console.log(response);
         });
 
-      });
-
-
-
-
-
+      })
 
 
       
 
+      function delet(id){
+
+        alert(id)
+        var settings = {
+          "url":  'https://gorest.co.in/public/v2/users/'+id,
+          "method": "DELETE",
+          "timeout": 0,
+          "headers": {
+            "Authorization": "Bearer da2202a16246009c93b2e8c7dbfd4812af10d94e75c6d76cd8c8989ab0420dcc"
+          },
+        };
+
+        $.ajax(settings).done(function (response) {
+          console.log(response);
+          alert("done")
+        });
+      }
+
+
+      })
+
+
+      $("#postData").click(function () {
 
 
 
 
+      })
+
+function insert(id){
+
+var settings = {
+  "url": "https://gorest.co.in/public/v2/users",
+  "method": "GET",
+  "timeout": 0,
+  "headers": {
+    "Authorization": "Bearer da2202a16246009c93b2e8c7dbfd4812af10d94e75c6d76cd8c8989ab0420dcc"
+  },
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
 
 
 
 
+}
 
+   
+   function update(daa){
 
+    $('#name').val(daa.name);
+        $('#email').val(daa.email);
+        if (daa.gender === 'male') {
+            $('#male').prop('checked', true);
+        }
+        else {
+            $('#female').prop('checked', true);
+        }
+        if (daa.status === 'active') {
+            $('#active').prop('checked', true);
+        }
+        else {
+            $('#inactive').prop('checked', true);
+        }
+        $('#form').val(daa.id)
 
-    });  
+   }
   </script>
 
 

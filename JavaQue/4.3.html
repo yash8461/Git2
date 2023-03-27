@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    function sumTwoSmallestNums(arr) {
+        let positiveNums = arr.filter(num => num > 0);
+        positiveNums.sort((a, b) => a - b);
+        return positiveNums[0] + positiveNums[1];
+      }
+    
+      console.log(sumTwoSmallestNums([19, 5, 42, 2, 77])); // Output: 7
+    console.log(sumTwoSmallestNums([2, 9, 6, -1])); // Output: 8
+
+  </script>
+</body>
+</html>
+

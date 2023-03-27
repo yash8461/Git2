@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  
+  function dis(price, discount) {
+      let discountAmount = price * discount / 100;
+      let finalPrice = price - discountAmount;
+      return finalPrice;
+    }
+  
+    console.log(dis(1500, 50)); // Output: 750
+  console.log(dis(89, 20)); // Output: 71.2
+  console.log(dis(100, 75)); // Output: 25
+</script>
+</body>
+</html>
+
+

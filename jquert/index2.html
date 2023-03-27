@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <table></table>
+   
+    <script>
+
+        var settings = {
+            "url": "https://gorest.co.in/public/v2/users",
+            "method": "GET",
+            "timeout": 0,
+            "headers": {
+                "Authorization": "Bearer da2202a16246009c93b2e8c7dbfd4812af10d94e75c6d76cd8c8989ab0420dcc"
+            },
+        };
+
+        $.ajax(settings).done(function (response) {
+
+            call(response)
+
+
+        })
+      
+         $("<tr/>").append($("<th/>").text("Id"))
+         .append($("<th/>").text("Name"))
+         .append($("<th/>").text("email"))
+         .append($("<th/>").text("gender"))
+         .append($("<th/>").text("status"))
+         .appendTo("table")
+
+         function call(response){
+ 
+            for(var i in response){
+
+                //   $("<tr/>").append($("<td/>").text(`${response[i].id}`))
+                // .append($("<td/>").text(`${response[i].name}`))
+                // .append($("<td/>").text(`${response[i].email}`))
+                // .append($("<td/>").text(`${response[i].gender}`))
+                // .append($("<td/>").text(`${response[i].status}`))
+                // appendTo("table")
+
+            //     $("<tr/>").append($("<td/>").text(`${response[i].id}`))
+            //  .append($("<td/>").text(`${response[i].name}`))
+            //  .append($("<td/>").text(`${response[i].email}`))
+            //  .append($("<td/>").text(`${response[i].gender}`))
+            //  .append($("<td/>").text(`${response[i].status}`))
+            //  .appendTo("table")
+
+                $("<tr/>").append($("<td/>").text(`${response[i].id}`))
+             .append($("<td/>").text(`${response[i].name}`))
+             .append($("<td/>").text(`${response[i].email}`))
+             .append($("<td/>").text(`${response[i].gender}`))
+             .append($("<td/>").text(`${response[i].status}`))
+             .appendTo("table")
+
+            }
+
+         }
+
+
+    </script>
+
+</body>
+
+</html>

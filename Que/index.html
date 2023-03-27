@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <table id="data">
+
+    </table>
+    <script>
+
+        var settings = {
+            "url": "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita%",
+            "method": "GET",
+            "timeout": 0,
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response)
+
+            var str = "";
+            for (let i = 0; i < response.length; i++) {
+
+                str += `
+                <tr>
+                    
+                    <td>${response.drinks[i].idDrink}</td>
+                    <td>${response.drinks[i].strDrink}</td>
+                    
+                </tr>
+                
+                `
+            }
+            $("#data").html(str);
+
+        });
+
+
+    </script>
+</body>
+
+</html>

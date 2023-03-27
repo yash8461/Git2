@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    function countNegatives(arr) {
+        let count = 0;
+        
+        // Loop over each element in the array
+        for (let i = 0; i < arr.length; i++) {
+          const value = arr[i];
+          
+          // If the value is negative, increment the count
+          if (value < 0) {
+            count++;
+          }
+        }
+        
+        // Return the count of negative values
+        return count;
+      }
+    
+      console.log(countNegatives([4,5,7,3,-1,-4])); // 2
+    console.log(countNegatives([1,-2,3,-4,5])); // 2
+    console.log(countNegatives([0,1,2,3,4])); // 0
+  </script>
+</body>
+</html>
+

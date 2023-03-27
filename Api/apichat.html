@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>API Table Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>API Table Example</h1>
+    <button id="refresh-button">Refresh Data</button>
+    <table id="data-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script>
+      const apiUrl = "https://jsonplaceholder.typicode.com/users";
+      let users = [];
+
+      // Fetch data from the API and populate the table
+      function fetchData() {
+        $.get(apiUrl, function (data) {
+          users = data;
+          populateTable();
+        });
+      }
+
+      // Populate the table with data
+      function populateTable() {
+        const tableBody = $("#data-table tbody");
+        tableBody.empty();
+        users.forEach(function (user) {
+          const row = $("<tr>");
+          row.append($("<td>").text(user.id));
+          row.append($("<td>").text(user.name));
+          row.append($("<td>").text(user.email));
+          row.append(
+            $("<td>").append(
+              $("<button>")
+                .text("Edit")
+                .click(function () {
+                  editUser(user);
+                })
+            )
+          );
+          tableBody.append(row);
+        });
+      }
+
+      // Add a new user to the list
+      function addUser(user) {
+        users.push(user);
+        populateTable();
+      }
+
+      // Edit an existing user
+      function editUser(user) {
+        const newName = prompt("Enter the new name:", user.name);
+        const newEmail = prompt("Enter the new email:", user.email);
+        user.name = newName;
+        user.email = newEmail;
+        populateTable();
+      }
+
+      // Remove a user from the list
+      function removeUser(user) {
+        const index = users.indexOf(user);
+        if (index > -1) {
+          users.splice(index, 1);
+          populateTable();
+        }
+      }
+
+      // Handle the click event for the Refresh Data button
+      $("#refresh-button").click(function () {
+        fetchData();
+      });
+
+      // Fetch the initial data and populate the table
+      fetchData();
+    </script>
+  </body>
+</html>

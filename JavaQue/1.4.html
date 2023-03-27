@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    function reverse(str) {
+        let reversed = "";
+        
+        // Loop over each character in the input string
+        for (let i = str.length - 1; i >= 0; i--) {
+          const char = str.charAt(i);
+          
+          // If the character is a letter, change its case
+          if (/[a-zA-Z]/.test(char)) {
+            if (char === char.toUpperCase()) {
+              reversed += char.toLowerCase();
+            } else {
+              reversed += char.toUpperCase();
+            }
+          } else {
+            reversed += char;
+          
+          }
+        }
+        
+        // Return the reversed and case-swapped string
+        return reversed;
+      }
+    
+      console.log(reverse("Hello World")); // "DLROw OLLEh"
+    console.log(reverse("abcdefg")); // "GFEDCBA"
+    console.log(reverse("12345")); // "54321"
+  </script>
+</body>
+</html>
+

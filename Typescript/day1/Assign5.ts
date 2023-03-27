@@ -1,9 +1,4 @@
-// interface Employee {
-//   id: string;
-//   name: string;
-//   city: string;
-//   doj: Date;
-// }
+
 
 const employees: any[] = [
   { id: "e1", name: "John Doe", city: "Mumbai", doj: new Date("2020-01-01") },
@@ -13,7 +8,8 @@ const employees: any[] = [
   { id: "e5", name: "Tom Brown", city: "Mumbai", doj: new Date("2020-12-01") }
 ];
 
-// Search the employee with ID
+
+// Search the employees who has joined after year 2020
 const employeeById = employees.find(employee => employee.id === "e2");
 console.log("Employee by ID:", employeeById);
 

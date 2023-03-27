@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+
+    function removeProperty(obj) {
+        const { b, ...rest } = obj;
+        return rest;
+      }
+    
+      console.log(removeProperty({ a: 1, b: 7, c: 3 })); // Output: { a: 1, c: 3 }
+    console.log(removeProperty({ b: 0, a: 7, d: 8 })); // Output: { a: 7, d: 8 }
+    
+    // function removeProperty(obj) {
+    //     delete obj.b;
+    //     return obj;
+    //   }
+  </script>
+</body>
+</html>
+
+
+  
