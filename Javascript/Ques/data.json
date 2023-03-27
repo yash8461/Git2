@@ -1,0 +1,18 @@
+[
+    {
+        "username": "john",
+        "firstName": "John",
+        "lastName": "Doe",
+        "gender": "Male",
+        "profileURL": "https://cdn-icons-png.flaticon.com/512/3135/3135707.png",
+        "email": "john.doe@example.com"
+    },
+    {
+        "username": "jane",
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "gender": "Female",
+        "profileURL": "https://cdn-icons-png.flaticon.com/128/563/563230.png",
+        "email": "jane.doe@example.com"
+    }
+]
