@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="flex flex-wrap" id="output"></div>
+    <script>
+
+        var settings = {
+            "url": "https://gorest.co.in/public/v2/users",
+            "method": "GET",
+            "timeout": 0,
+            "headers": {
+              "Authorization": "Bearer da2202a16246009c93b2e8c7dbfd4812af10d94e75c6d76cd8c8989ab0420dcc"
+            },
+          };
+        
+          $.ajax(settings).done(function (response) {
+            
+            call(response);
+          });
+        
+          function call(dum) {
+           
+       
+            var card_container = $('<div />').addClass('container');
+        for (var d of dum) {
+            var card1 = $('<div />').addClass('card');
+           
+            var h1 = $('<h1/>').text(d.name).addClass('h1');
+            var h2 = $('<h2 />').text(d.email).addClass('h1');
+            var sta = $('<h4>').text(d.status).addClass('h1');
+            // var del = $('<button/>');
+            // del.text("Delete").attr('onclick', `del(${d.id})`);
+            // del.addClass('dbtn')
+            // var ins = $('<button/>');
+            // ins.text("Update").attr('onclick', `insert(${d.id})`);
+            // ins.addClass('ubtn')
+
+
+          
+
+            card1
+                .append(
+                    h1,
+                    sta
+                    ,
+                    h2,
+                   
+                );
+
+            card1.appendTo(card_container);
+        }
+
+
+        card_container.appendTo('#output');
+    }
+
+
+
+
+    </script>
+<style type="text/tailwindcss">
+    @layer utilities {
+
+
+        .card{
+            @apply  rounded overflow-hidden shadow-md hover:shadow-2xl hover:bg-blue-200  w-80 bg-blue-200 m-6 h-60
+        }
+        .container{
+            @apply flex flex-wrap
+        }
+         .h1{
+
+            
+         }
+          
+        }
+    </style>
+</body>
+</html>
+
+
+
+
+

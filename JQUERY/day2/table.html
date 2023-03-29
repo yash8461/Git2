@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<button type="button"> Sow data</button>
+<table class=" w-[1400px] h-[700px] m-4">
+    <thead id="th">
+
+    </thead>
+    <tbody id="tb">
+
+    </tbody>
+</table>
+
+<body>
+
+
+    <script>
+
+        // $("button").click(function () {
+
+        // $("button").text("Hide Data");
+
+
+
+
+        var settings = {
+            "url": "https://gorest.co.in/public/v2/users",
+            "method": "GET",
+            "timeout": 0,
+        };
+
+        $.ajax(settings).done(function (response) {
+            // console.log(response);
+            get(response);
+        });
+
+
+        function get(data) {
+
+            $('<tr/>').addClass("tr")
+            .append($('<th/>').text("Id").addClass("th"))
+                .append($('<th/>').text("Name").addClass("th"))
+                .append($('<th/>').text("Email").addClass("th"))
+                .append($('<th/>').text("Gender").addClass("th"))
+                .append($('<th/>').text("Status").addClass("th"))
+                .appendTo("#th")
+
+            for (var v of data) {
+
+                $('<tr/>').addClass("tr1")
+                 .append($('<td/>').addClass("td").text(v.id).addClass("td"))
+                    .append($('<td/>').text(v.name).addClass("td1"))
+                    .append($('<td/>').text(v.email).addClass("td1"))
+                    .append($('<td/>').text(v.gender).addClass("td1"))
+                    .append($('<td/>').text(v.status).addClass("td1"))
+                    .appendTo("#tb")
+
+
+            }
+
+
+
+        }
+
+
+
+            // })
+
+
+
+    </script>
+
+    <style type="text/tailwindcss">
+
+        @layer utilities {
+     
+            .tr{
+                @apply bg-blue-200
+            }
+            .tr1{
+                @apply bg-blue-100
+            }
+            .th{
+                @apply ml-6
+            }
+            
+          
+
+}
+
+
+ </style>
+</body>
+
+</html>

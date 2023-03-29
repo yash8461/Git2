@@ -27,7 +27,7 @@ interface Product {
     makePurchase(productId: string, quantity: number) {
       const product = this.getProduct(productId);
 
-      console.log("This : \n" )
+     
       console.log(product)
       if (product && product.quantity >= quantity) {
         product.quantity -= quantity;

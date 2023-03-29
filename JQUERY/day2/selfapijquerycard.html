@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<button type="button" > Sow data</button>
+<div id="output"></div>
+<body>
+
+
+    <script>
+
+$("button").click(function(){
+
+$("button").text("Hide Data");
+
+
+
+    
+            var settings = {
+      "url": "https://gorest.co.in/public/v2/users",
+      "method": "GET",
+      "timeout": 0,
+    };
+    
+    $.ajax(settings).done(function (response) {
+      get(response);
+    });
+
+
+function get(data) {
+
+var container = $('<div/>').addClass('container');
+for(var v of data){
+
+    var card = $('<div/>').addClass('card')
+    var card1 = $('<div/>').addClass('card1')
+    var h1 = $('<p/>').text("id: "+v.id).addClass('h1')
+    var h2 = $('<p/>').text("name: "+v.name).addClass('h2')
+    var h3 = $('<p/>').text("email: "+v.email).addClass('h3')
+    var h4 = $('<p/>').text("gender: "+v.gender).addClass('h2')
+    var h5 = $('<p/>').text("status: "+v.status).addClass('h2')
+
+    card1.append(h1, h2,h3,h4,h5)
+    card.append(card1)
+    card.appendTo(container)
+}
+
+container.appendTo("#output")
+
+
+
+
+
+}
+
+
+
+})
+
+
+
+    </script>
+
+ <style type="text/tailwindcss">
+
+@layer utilities {
+
+ .container{
+
+    @apply flex flex-wrap bg-gray-200 
+ }
+
+ .card{
+    @apply block m-3 bg-blue-200 shadow-md w-80 h-60 hover:shadow-xl hover:bg-blue-300 overflow-hidden
+ }
+
+ .card1{
+
+    @apply m-6
+ }
+ 
+ .h1{
+
+@apply  text-2xl m-3
+ }
+
+ 
+.h2{
+
+    @apply text-lg m-2
+}
+
+.h3{
+
+    @apply text-red-600 
+}
+ 
+
+ 
+
+}
+
+
+ </style>
+</body>
+</html>
