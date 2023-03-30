@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>	
 	<title>Simple Calculator using Javascript</title>
 	<style>
 
@@ -49,6 +50,8 @@
 	       function outcome() { 
 	           var x = Number(document.getElementById("num-one").value);
 	           var y = Number(document.getElementById("num-two").value);
+
+			
 	           var z = 0;
 	           
 	           if (document.getElementById("box1").checked){
@@ -63,7 +66,9 @@
 	           else{
 	               z = x / y;
 	           }
-	           document.getElementById("resultArea").innerHTML =  z;    
+	        //    document.getElementById("resultArea").innerHTML =  z;   
+			
+			$("#resultArea").text(z)
 	       } 
 	</script>
 </body>
