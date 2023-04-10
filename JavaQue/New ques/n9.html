@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Basic Math Operations</title>
+	<script>
+		function calculate() {
+			var num1 = document.getElementById("num1").value;
+			var num2 = document.getElementById("num2").value;
+			var result = document.getElementById("result");
+			var operation = document.querySelector('input[name="operation"]:checked');
+
+			// Check if numbers are entered
+			if (num1 == "") {
+				alert("Please enter first number");
+				return false;
+			}
+			if (num2 == "") {
+				alert("Please enter second number");
+				return false;
+			}
+
+			// Check if numbers are numeric
+			if (isNaN(num1)) {
+				alert("Please enter only numeric value for first number");
+				return false;
+			}
+			if (isNaN(num2)) {
+				alert("Please enter only numeric value for second number");
+				return false;
+			}
+
+			// Check if operation is selected
+			if (!operation) {
+				alert("Please select the operation you want to perform");
+				return false;
+			}
+
+			// Perform the operation
+			var value1 = parseFloat(num1);
+			var value2 = parseFloat(num2);
+			var answer;
+
+			if (operation.value == "addition") {
+				answer = value1 + value2;
+			} else if (operation.value == "subtraction") {
+				answer = value1 - value2;
+			} else if (operation.value == "multiplication") {
+				answer = value1 * value2;
+			} else if (operation.value == "division") {
+				answer = value1 / value2;
+			}
+
+			// Display the result
+			result.innerHTML = "Result is: " + answer;
+		}
+
+		function resetForm() {
+			document.getElementById("num1").value = "";
+			document.getElementById("num2").value = "";
+			document.getElementById("result").innerHTML = "";
+			document.querySelector('input[name="operation"]:checked').checked = false;
+		}
+	</script>
+</head>
+<body>
+	<h2>Basic Math Operations</h2>
+	<form>
+		<label>Please enter first number:</label>
+		<input type="text" id="num1"><br>
+
+		<label>Please enter second number:</label>
+		<input type="text" id="num2"><br>
+
+		<label>Please select operation you want to perform:</label><br>
+		<input type="radio" name="operation" value="addition">Addition<br>
+		<input type="radio" name="operation" value="subtraction">Subtraction<br>
+		<input type="radio" name="operation" value="multiplication">Multiplication<br>
+		<input type="radio" name="operation" value="division">Division<br>
+
+		<button type="button" onclick="calculate()">Calculate</button>
+		<button type="button" onclick="resetForm()">Reset</button>
+
+		<label id="result"></label>
+	</form>
+</body>
+</html>

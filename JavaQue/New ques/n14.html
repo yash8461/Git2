@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="div1" style="background-color: red; height: 100px; display: none;"></div>
+<button onclick="showDiv(1)">Show Div 1</button>
+<button onclick="hideDiv(1)">Hide Div 1</button>
+
+<div id="div2" style="background-color: green; height: 100px; display: none;"></div>
+<button onclick="showDiv(2)">Show Div 2</button>
+<button onclick="hideDiv(2)">Hide Div 2</button>
+
+<div id="div3" style="background-color: blue; height: 100px; display: none;"></div>
+<button onclick="showDiv(3)">Show Div 3</button>
+<button onclick="hideDiv(3)">Hide Div 3</button>
+
+<script>
+
+function showDiv(divNum) {
+    var div = document.getElementById("div" + divNum);
+    div.style.display = "block";
+  }
+  
+  function hideDiv(divNum) {
+    var div = document.getElementById("div" + divNum);
+    div.style.display = "none";
+  }
+  
+</script>
+  
+</body>
+</html>
+
+
+

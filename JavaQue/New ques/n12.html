@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Country List</title>
+	<script>
+		function showSelectedCountry() {
+			var select = document.getElementById("country-select");
+			var selectedOption = select.options[select.selectedIndex].value;
+			var countries = document.getElementsByClassName("country");
+
+			if (selectedOption === "default") {
+				for (var i = 0; i < countries.length; i++) {
+					countries[i].style.display = "block";
+				}
+			} else {
+				for (var i = 0; i < countries.length; i++) {
+					if (countries[i].id === selectedOption) {
+						countries[i].style.display = "block";
+					} else {
+						countries[i].style.display = "none";
+					}
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>Select a country:</h1>
+	<select id="country-select" onchange="showSelectedCountry()">
+		<option value="default">Please select</option>
+		<option value="india">India</option>
+		<option value="uk">United Kingdom</option>
+		<option value="usa">United States</option>
+		<option value="australia">Australia</option>
+		<option value="canada">Canada</option>
+	</select>
+	<p id="selected-country">Your Selected Country:</p>
+	<div class="country" id="india">India</div>
+	<div class="country" id="uk">United Kingdom</div>
+	<div class="country" id="usa">United States</div>
+	<div class="country" id="australia">Australia</div>
+	<div class="country" id="canada">Canada</div>
+</body>
+</html>

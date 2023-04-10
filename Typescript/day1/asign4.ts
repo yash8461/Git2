@@ -28,7 +28,7 @@ interface Product {
       const product = this.getProduct(productId);
 
      
-      console.log(product)
+      
       if (product && product.quantity >= quantity) {
         product.quantity -= quantity;
         console.log(`Purchase successful. Remaining quantity: ${product.quantity}`);

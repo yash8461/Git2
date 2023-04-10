@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+</head>
+<body>
+    <table>
+        <thead>
+            <th>id</th>
+            <th>title</th>
+ 
+            <th>price</th>
+            <th>dec</th>
+ 
+        </thead>
+        <tbody id="tbody2">
+ 
+        </tbody>
+    </table>
+    <select name="Dropdown" id="">
+        <!-- <option >Dropdown</option> -->
+ 
+        <option id="one" value="1">1</option>
+        <option id="two" value="2">2</option>
+        <option id="three"value="3">3</option>
+        <option id="four" value="4">4</option>
+        <option id="five" value="5">5</option>
+    </select>
+    <table>
+        <thead>
+            <th>id</th>
+            <th>title</th>
+ 
+            <th>price</th>
+            <th>dec</th>
+ 
+        </thead>
+        <tbody id="tbody1">
+ 
+        </tbody>
+    </table>
+   Search with Id <input type="text" id="search">
+   <button id="btn1" onclick="fetch2()">search </button>
+
+   <style>
+     table  tr td th {
+           border: 2px solid black;
+           padding: 40px;
+       }
+   </style>
+
+   <table>
+       <thead>
+           <th>id</th>
+           <th>title</th>
+
+           <th>price</th>
+           <th>dec</th>
+
+       </thead>
+       <tbody id="tbody">
+
+       </tbody>
+   </table>
+<button id="btn" onclick="fetch1()">Fetch </button>
+</body>
+<script>
+
+    $("#btn").click(function(){
+        $.getJSON("https://fakestoreapi.com/products",function fetch1(data) {
+       console.log(data)
+       let placeholder=document.getElementById("tbody");
+       var out="";
+       for(let i of data){
+           out+=`<tr>
+    <td>${i.id}</td>
+    <td>${i.title}</td>
+    <td>${i.price}</td>
+    <td>${i.description}</td>
+</tr>`
+       }
+       placeholder.innerHTML=out;
+   })
+    })
+  
+    $("#btn1").click(function(){
+        $.getJSON("https://fakestoreapi.com/products",function fetch1(data) {
+       console.log(data)
+       let placeholder=document.getElementById("tbody1");
+       var out="";
+       let searchid=document.getElementById("search").value
+       for(let i of data){
+if(i.id==searchid){
+    out+=`<tr>
+    <td>${i.id}</td>
+    <td>${i.title}</td>
+    <td>${i.price}</td>
+    <td>${i.description}</td>
+</tr>`
+}
+         
+       }
+       placeholder.innerHTML=out;
+   })
+    })
+
+
+    $("select").click(function(){
+        $.getJSON("https://fakestoreapi.com/products",function fetch3(data) {
+       let placeholder=document.getElementById("tbody2");
+ var select1=$("select").val()
+       var out="";
+
+    for (let i = 0; i < parseInt(select1); i++) {
+    out+=`<tr>
+    <td>${data[i].id}</td>
+    <td>${data[i].title}</td>
+    <td>${data[i].price}</td>
+    <td>${data[i].description}</td>
+</tr>`
+
+    }     
+       
+       placeholder.innerHTML=out;
+   })
+    })
+
+          
+</script>
+
+</html>
