@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Submit Buttons Example</title>
+  </head>
+  <body>
+    <form id="myForm">
+      <label for="submit1">Please click on "Submit 1" button for opening numeric1.htm</label>
+      <input type="button" id="submit1" value="Submit 1">
+      <br><br>
+      <label for="submit2">Please click on "Submit 2" button for opening numeric2.htm</label>
+      <input type="button" id="submit2" value="Submit 2">
+    </form>
+    <script src="script.js"></script>
+
+    <script>
+
+      // Get the form element
+const form = document.getElementById("myForm");
+
+// Get the submit buttons
+const submit1Button = document.getElementById("submit1");
+const submit2Button = document.getElementById("submit2");
+
+// Add event listeners to the buttons
+submit1Button.addEventListener("click", () => {
+  form.action = "numeric1.htm";
+  form.submit();
+});
+
+submit2Button.addEventListener("click", () => {
+  form.action = "numeric2.htm";
+  form.submit();
+});
+
+    </script>
+  </body>
+</html>
+
+
+

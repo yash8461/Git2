@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<form action="">
+  <input type="text" id="textbox">
+  <input type="submit" name="" id="" onsubmit="return onsubmit()">
+
+
+</form>
+   
+  <script>
+function onsubmit(){
+let value = document.getElementById("textbox").value;
+let errorMsg = document.getElementById("errorMsg");
+
+if (!value) {
+  errorMsg.innerHTML = "Please enter any numeric value";
+  document.getElementById("textbox").focus();
+} else if (isNaN(value)) {
+  errorMsg.innerHTML = "Only numeric values are allowed. Please re-enter the value";
+  document.getElementById("textbox").focus();
+} else {
+  errorMsg.innerHTML = "Entered value is a numeric value";
+}
+}
+  </script>
+</body>
+</html>
+

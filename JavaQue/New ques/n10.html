@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Popup 1</title>
+	<script>
+		function openPopup() {
+			window.open("popup2.htm", "Popup", "height=200,width=400,top=100,left=100,toolbar=no,location=no,resizable=no");
+		}
+	</script>
+</head>
+<body>
+	<p>Please click here in order to read our Terms and Conditions</p>
+	<button onclick="openPopup()">Read</button>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Popup 2</title>
+	<script>
+		function closePopup() {
+			window.close();
+		}
+	</script>
+</head>
+<body>
+	<p>Welcome and please agree with our Terms and Conditions</p>
+	<button onclick="closePopup()">Close</button>
+</body>
+</html>

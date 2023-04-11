@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <label>Please select your technology:</label>
+<br>
+<input type="radio" id="php" name="technology" value="PHP">
+<label for="php">PHP</label>
+<input type="radio" id="aspnet" name="technology" value="ASP.NET">
+<label for="aspnet">ASP.NET</label>
+<input type="radio" id="asp" name="technology" value="ASP">
+<label for="asp">ASP</label>
+<input type="radio" id="jsp" name="technology" value="JSP">
+<label for="jsp">JSP</label>
+<input type="radio" id="perl" name="technology" value="PERL">
+<label for="perl">PERL</label>
+<input type="radio" id="coldfusion" name="technology" value="Cold Fusion">
+<label for="coldfusion">Cold Fusion</label>
+<input type="radio" id="other" name="technology" value="Other">
+<label for="other">Other</label>
+<br>
+<span id="selectedTechnology"></span>
+
+<script>
+
+let radios = document.querySelectorAll('input[type=radio][name="technology"]');
+let selectedTechnology = document.getElementById('selectedTechnology');
+
+radios.forEach(function(radio) {
+  radio.addEventListener('change', function() {
+    selectedTechnology.innerHTML = "You have selected: " + this.value;
+  });
+  let label = document.querySelector('label[for="' + radio.id + '"]');
+  label.addEventListener('click', function() {
+    radio.click();
+  });
+});
+
+</script>
+
+</body>
+</html>
+
+
+
+
+

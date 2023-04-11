@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href="#" id="add-contact">Add a Contact</a>
+<div id="input-container"></div>
+
+<script>
+// get references to the add-contact link and input-container div
+const addContactLink = document.getElementById("add-contact");
+const inputContainer = document.getElementById("input-container");
+
+// initialize a counter for unique ID generation
+let counter = 0;
+
+// add event listener for clicking the add-contact link
+addContactLink.addEventListener("click", function(event) {
+  // prevent the link from following its href attribute
+  event.preventDefault();
+
+  // create a new input element with unique ID and add to the input-container
+  const input = document.createElement("input");
+  input.type = "text";
+  input.id = `contact-${counter}`;
+  inputContainer.appendChild(input);
+
+  // create a new button element with the "X" text and add to the input-container
+  const removeButton = document.createElement("button");
+  removeButton.type = "button";
+  removeButton.innerText = "X";
+  inputContainer.appendChild(removeButton);
+
+  // add event listener for clicking the remove button
+  removeButton.addEventListener("click", function() {
+    // remove the input field and button from the input-container
+    inputContainer.removeChild(input);
+    inputContainer.removeChild(removeButton);
+  });
+
+  // increment the counter for next unique ID generation
+  counter++;
+});
+
+</script>
+</body>
+</html>
+
+
+
+

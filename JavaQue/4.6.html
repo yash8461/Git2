@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function splitNumberIntoDigits(a) {
+ 
+  const digitsString = a.toString();
+  
+  const digitsArray = digitsString.split('').map(Number);
+  
+  
+  return digitsArray;
+}
+console.log(splitNumberIntoDigits(931)); // Output: [9, 3, 1]
+console.log(splitNumberIntoDigits(123456789)); // Output: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    </script>
+
+</body>
+</html>

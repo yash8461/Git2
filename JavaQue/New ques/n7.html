@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <label><input type="checkbox" id="checkAll">Check All</label>
+<br>
+<label><input type="checkbox" name="country" value="USA">USA</label>
+<br>
+<label><input type="checkbox" name="country" value="UK">UK</label>
+<br>
+<label><input type="checkbox" name="country" value="India">India</label>
+<br>
+<label><input type="checkbox" name="country" value="Asia Pacific">Asia Pacific</label>
+<br>
+<label><input type="checkbox" name="country" value="Australia">Australia</label>
+<br>
+<label><input type="checkbox" name="country" value="Middle East">Middle East</label>
+
+<script>
+const checkAll = document.querySelector('#checkAll');
+const checkboxes = document.querySelectorAll('input[name="country"]');
+
+checkAll.addEventListener('change', function() {
+  for (let i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].checked = this.checked;
+  }
+});
+
+for (let i = 0; i < checkboxes.length; i++) {
+  checkboxes[i].addEventListener('change', function() {
+    if (!this.checked) {
+      checkAll.checked = false;
+    } else if (document.querySelectorAll('input[name="country"]:checked').length === checkboxes.length) {
+      checkAll.checked = true;
+    }
+  });
+}
+
+
+</script>
+</body>
+</html>
+
+
+
+

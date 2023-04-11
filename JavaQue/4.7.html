@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+function multiplyDictValuesByNumber(a, b) {
+
+  let result = [];
+  
+ 
+  for (let key in a) {
+    
+    
+    result[key] = a[key] * b;
+  }
+  
+
+  return result;
+}
+
+console.log(multiplyDictValuesByNumber({'a': 1, 'b': 2, 'c': 3}, 3)); // Output: {'a': 3, 'b': 6, 'c': 9}
+console.log(multiplyDictValuesByNumber({'x': 5, 'y': 10, 'z': 15}, 2)); // Output: {'x': 10, 'y': 20, 'z': 30}
+
+    </script>
+</body>
+</html>
