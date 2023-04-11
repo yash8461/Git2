@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<td></td>
+<table id="tb" border="">
+
+</table>
+<body>
+    <script>
+      fetch("data 1.json")
+      .then(t=>t.text())
+      .then(y=>display(y))
+
+     
+
+      function display(y){
+
+        alert(y)
+        var str = "";
+    for(var i=0;i<y.length;i++){
+
+      str+= `<tr>
+       
+        <td>${y.StudentImage} </td>
+        <td>${y.StudentName}</td>
+      
+
+        <tr/>`
+
+        str+=`<tr>
+            <td>${y.Address}</td>
+        
+
+
+            <tr/>`
+
+            
+        str+=`<tr>
+            <td>${y.DOB}</td>
+        
+
+
+            <tr/>`
+
+            str+=`<tr>
+            <td>${y.DOB}</td>
+        
+
+
+            <tr/>`
+
+            str+=`<tr>
+            <td>${y.Subjects[0].Hindi[0].Internal}</td>
+        
+
+
+            <tr/>`
+
+
+
+            document.getElementById('tb').innerHTML=str;
+
+
+
+     
+
+      }
+    }
+
+    
+    
+    </script>
+</body>
+</html>

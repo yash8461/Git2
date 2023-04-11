@@ -1,0 +1,50 @@
+{
+
+    "StudentID": 1,
+
+    "StudentName": "Rahul",
+
+    "StudentImage": "https://d2c967qfslpzim.cloudfront.net/images/img1.jpg",
+
+    "Address": "Ahmedabad",
+
+    "DOB": "1980-02-9",
+
+    "Subjects": {
+
+        "Hindi": {
+
+            "Internal": 90,
+
+            "External": 100
+
+        },
+
+        "English": {
+
+            "Internal": 90,
+
+            "External": 100
+
+        },
+
+        "Math": {
+
+            "Internal": 90,
+
+            "External": 100
+
+        },
+
+        "Science": {
+
+            "Internal": 40,
+
+            "External": 50
+
+        }
+
+    }
+
+}
+    

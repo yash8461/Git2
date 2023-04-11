@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+        background-color : blue;
+        }
+    </style>
+</head>
+<div style="padding: 10px;">
+<button type="button" onclick="key()">Keyboard</button>
+<button type="button" onclick="mouse()">Mouse</button>
+<button type="button" onclick="pen()">Pendrive</button>
+<button type="button" onclick="monit()">Monitor</button>
+</div>
+
+<table >
+
+    <thead id="th"></thead>
+ <tbody id="tb"></tbody>
+</table>
+
+<body>
+    <script>
+
+        fetch("data.json")
+            .then(t => t.text())
+            .then(y => display(y))
+
+        // fetch("data1.json")
+        //     .then(t => t.text())
+        //     .then(y => displa(y))
+
+        function display(y) {
+         
+            alert(y.products.ProductName)
+          
+          str="";
+          for (var i = 0; i <y.length; i++) {
+           
+            str +=`
+                   <tr>
+                   <th>Name <th/>
+               
+                        <th>Company <th/>
+                           
+
+
+                    <tr/>
+            
+            
+            `
+            document.getElementById('th').innerHTML=str;
+                        }
+                    }
+         
+    // }
+    //     function displa(y) {
+
+    //         if(y.Details[0].InstockQty>10){
+
+                
+    //         }
+
+    //         str="";
+    //       for (var i = 0; i <y.length; i++) {
+
+    //         str +=`
+    //                <tr>
+    //                <th>Color <th/>
+    //                 <td>${y.Color} <td/>
+    //                     <th>Price <th/>
+    //                         <td>${y.UnitPrice} <td/>
+
+
+    //                 <tr/>
+            
+            
+    //         `
+
+    //         str +=`
+    //                <tr>
+    //                 <td><img src="${y.Details[0].Image}" alt=""><td/>
+    //                 <tr/>
+            
+            
+    //         `
+
+    //         str +=`
+    //                <tr>
+    //                <th>Qty <th/>
+    //                 <td>${y.InstockQty} <td/>
+    //                     <th>Discount<th/>
+                           
+
+
+    //                 <tr/>`
+
+
+    //                 str +=`
+    //                <tr>
+    //                <th><th/>
+    //                 <td><td/>
+    //                     <th>Final Price<th/>
+    //                         <td>${y.UnitPrice} <td/>
+
+
+    //                 <tr/>`
+
+    //                 document.getElementById("tb").innerHTML=str;
+           
+    //     }
+    //     }
+    // }
+    </script>
+</body>
+
+</html>

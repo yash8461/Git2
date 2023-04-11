@@ -1,0 +1,38 @@
+{"productdetail":[
+
+    {
+
+        "ProductID":1,
+
+        "Details":[{"Color":"grey","Company":"HP","Image":"https://tutorial.radixind.in/images/products/keyboard.jpg","UnitPrice":500,"InstockQty":12}]
+
+    },
+
+    {
+
+        "ProductID":2,
+
+        "Details":[{"Color":"black","Company":"Logitech","Image":"https://tutorial.radixind.in/images/products/mouse.jpg","UnitPrice":300,"InstockQty":5}]
+
+    },
+
+    {
+
+        "ProductID":3,
+
+        "Details":[{"Color":"grey","Company":"Transcent","Image":"https://tutorial.radixind.in/images/products/pendrive.jpg","UnitPrice":200,"InstockQty":15}]
+
+    },
+
+    {
+
+        "ProductID":4,
+
+        "Details":[{"Color":"black","Company":"HP","Image":"https://tutorial.radixind.in/images/products/monitor.jpg","UnitPrice":5000,"InstockQty":0}]
+
+    }
+
+]
+
+
+ }
